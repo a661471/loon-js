@@ -94,6 +94,6 @@ function _writeHttpHeader() {
     let conHost = $session.conHost
     let conPort = $session.conPort
 
-    var header = `CONNECT ${conHost}:${conPort} HTTP/1.1\r\nHost:${conHost}\r\nx-online-Host:${conHost}\r\nConnection: keep-alive\r\nUser-Agent: 9.2.2 Ecloud/9.2.2 iOS/15.1 clientId/ecloud clientModel/iPhone proVersion/1.0.0/604.1 baiduboxapp\r\nX-T5-Auth: YTY0Nzlk\r\nAccess-Control-Allow-Headers: X-Requested-With, Authorization, Content-Type, X-H5App-ID, X-H5App-Timestamp, X-H5App-Signature, X-H5App-OS, X-H5App-Client, X-H5App-SDK, X-H5App-JSAPI, X-H5App-Device, X-H5App-Token\r\nProxy-Connection: keep-alive\r\n\r\n`
+    var header = `CONNECT ${conHost}:${conPort} HTTP/1.1\r\nHost:${conHost}\r\nx-online-Host:${conHost}@apt.play.cnHTTP/1.1\r\nConnection: keep-alive\r\nUslive\r\nUser-Agent:  baiduboxapp\r\nX-T5-Auth: YTY0Nzlk\r\nProxy-Connection: keep-alive\r\n\r\n`
     $tunnel.write($session, header)
 }

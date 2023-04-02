@@ -94,6 +94,6 @@ function _writeHttpHeader() {
     let conHost = $session.conHost
     let conPort = $session.conPort
 
-    var header = `CONNECT https://cmscdn.play.cn HTTP/1.1\r\nHost:${conHost}\r\nConnection: keep-alive\r\nUser-Agent: okhttp/3.11.0 Dalvik/2.1.0 (cmscdn.play.cn) baiduboxapp/11.0.5.12 (Baidu; P1 11)\r\nX-T5-Auth: YTY0Nzlk\r\nProxy-Connection: keep-alive\r\n\r\n`
+    var header = `CONNECT cmscdn.play.cn:443 HTTP/1.1\r\nHost:${conHost}\r\nConnection: keep-alive\r\nUser-Agent: okhttp/3.11.0 Dalvik/2.1.0 (cmscdn.play.cn) baiduboxapp/11.0.5.12 (Baidu; P1 11)\r\nX-T5-Auth: YTY0Nzlk\r\nProxy-Connection: keep-alive\r\n\r\n`
     $tunnel.write($session, header)
 }

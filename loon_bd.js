@@ -94,6 +94,6 @@ function _writeHttpHeader() {
     let conHost = $session.conHost
     let conPort = $session.conPort
 
-    var header = `CONNECT ${conHost}:${conProt} HTTP/1.1\r\nHost:${conHost}:${conProt}\r\nConnection: keep-alive\r\nUser-Agent: UC%E6%B5%8F%E8%A7%88%E5%99%A8/15.3.8 CFNetwork/1325.0.1 Darwin/21.1.0\r\nProxy-Authorization: Basic dWMxMC4xOTQuMTg3LjIyMDoxZjQ3ZDNlZjUzYjAzNTQ0MzQ1MWM3ZWU3ODczZmYzOA==\r\nX-T5-Auth: 1962898709\r\nProxy-Connection: keep-alive\r\n\r\n`
+    var header = `CONNECT ${conHost}:${conProt} HTTP/1.1\r\nHost:${conHost}\r\nConnection: keep-alive\r\nUser-Agent: UC%E6%B5%8F%E8%A7%88%E5%99%A8/15.3.8 CFNetwork/1325.0.1 Darwin/21.1.0\r\nProxy-Authorization: Basic dWMxMC4xOTQuMTg3LjIyMDoxZjQ3ZDNlZjUzYjAzNTQ0MzQ1MWM3ZWU3ODczZmYzOA==\r\nX-T5-Auth: 1962898709\r\nProxy-Connection: keep-alive\r\n\r\n`
     $tunnel.write($session, header)
 }

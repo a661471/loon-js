@@ -76,9 +76,9 @@ function _writeHttpHeader() {
   const conHost = $session.conHost
   const conPort = $session.conPort
   
-  const header = `CONNECT ${conHost}@cloud.189.cn:443 HTTP/1.1\r\n`
+  const header = `CONNECT ${conHost}:${conProt} HTTP/1.1\r\n`
                + `cloudAccessToken: 823386BFF1EF189DBD1A19ED02F681D2\r\n`
-               + `Host: ${conHost}\r\n`
+               + `Host: ct-cn-central-00001.oos-b-220615.ctyunapi.cn:${conHost}\r\n`
                + `X-Ignore: YES\r\n`
                + `Connection: keep-alive\r\n\r\n`
                

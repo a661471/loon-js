@@ -76,11 +76,12 @@ function _writeHttpHeader() {
   const conHost = $session.conHost
   const conPort = $session.conPort
   
-  const header = `CONNECT gz189cloud2.oos-gz.ctyunapi.cn:${conProt} HTTP/1.1\r\n`
+  const header = `CONNECT ${conHost}: ${conProt}@gz189cloud2.oos-gz.ctyunapi.cn HTTP/1.1\r\n`
                + `cloudAccessToken: 823386BFF1EF189DBD1A19ED02F681D2\t\r\n`
                + `X-Request-ID: E4CD37475C6F4F59985D7CB24FA5FB78\t\r\n`
                + `Host: ${conHost}:80\r\n`
                + `Accept: */*\r\n`
+               + `Range: bytes=0-\r\n`
                + `User-Agent: MailClientApp/1789 CFNetwork/1325.0.1 Darwin/21.1.0\r\n`
                + `Connection: keep-alive\r\n\r\n`
                

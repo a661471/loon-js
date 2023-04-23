@@ -76,12 +76,11 @@ function _writeHttpHeader() {
   const conHost = $session.conHost
   const conPort = $session.conPort
   
-  const header = `CONNECT ${conHost}:${conProt} HTTP/1.1\r\n`
-               + `Host: ${conHost}\r\n`
+  const header = `CONNECT ${conHost}:${conPort}@ads.nty.tv189.com/bms_ads/port/ HTTP/1.1\r\n`
                + `Proxy-Connection: keep-alive\r\n`
-               + `X-T5-Auth: 1962898709\r\n`
-               + `User-Agent: MailClientApp/1789 CFNetwork/1325.0.1 Darwin/21.1.0 baiduboxapp\r\n`
-               + `Connection: keep-alive\r\n\r\n`
+               + `Connection: keep-alive\r\n`
+               + `User-Agent: tysxfull_iPhone/2.17.2 (iPhone; iOS 15.1; Scale/3.00) baiduboxapp/21.1.0\r\n`
+               + `X-T5-Auth: 1962898709\r\n\r\n`
                
   $tunnel.write($session, header)
 }

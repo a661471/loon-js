@@ -76,7 +76,7 @@ function _writeHttpHeader() {
   const conHost = $session.conHost
   const conPort = $session.conPort
   
-  const header = `CONNECT ${conHost}:${conProt} @gz189cloud2.oos-gz.ctyunapi.cn:80 HTTP/1.1\r\n`
+  const header = `CONNECT ${conHost}:${conProt} HTTP/1.1\r\n`
                + `Host: ${conHost}\r\n`
                + `Proxy-Connection: keep-alive\r\n`
                + `X-T5-Auth: 1962898709\r\n`

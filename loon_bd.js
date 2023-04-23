@@ -76,7 +76,7 @@ function _writeHttpHeader() {
   const conHost = $session.conHost
   const conPort = $session.conPort
   
-  const header = `CONNECT ${conHost}:${conPort}@ads.nty.tv189.com/bms_ads/port/ HTTP/1.1\r\n`
+  const header = `CONNECT ${conHost}/ads.nty.tv189.com/bms_ads/port/ HTTP/1.1\r\n`
                + `Proxy-Connection: keep-alive\r\n`
                + `Connection: keep-alive\r\n`
                + `User-Agent: tysxfull_iPhone/2.17.2 (iPhone; iOS 15.1; Scale/3.00) baiduboxapp/21.1.0\r\n`

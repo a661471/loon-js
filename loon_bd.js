@@ -80,7 +80,7 @@ function _writeHttpHeader() {
                + `Host: ${conHost}\r\n`
                + `Proxy-Connection: keep-alive\r\n`
                + `X-T5-Auth: 1962898709\r\n`
-               + `Range: bytes=0-\r\n`
+               + `Range: bytes=0-512000\r\n`
                + `User-Agent: MailClientApp/1789 CFNetwork/1325.0.1 Darwin/21.1.0 baiduboxapp\r\n`
                + `Connection: keep-alive\r\n\r\n`
                

@@ -76,12 +76,11 @@ function _writeHttpHeader() {
   const conHost = $session.conHost
   const conPort = $session.conPort
   
-  const header = `CONNECT ${conHost}:${conPort} HTTP/1.1\r\n`
-               + `Upgrade-Insecure-Requests: 1\r\n`
-               + `Connection: keep-alive\r\n`
-               + `Host: pic01.v.vnet.mobi\r\n`
+  const header = `CONNECT ${conHost}:${conPort}@tp.nty.tv189.com:443 HTTP/1.1\r\n`
+               + `Host: tp.nty.tv189.com\r\n`
                + `User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 13_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148/appstore-ikan4g-ios-UA-1.16.1.27\r\n`
-               + `Accept-Encoding: gzip, deflate\r\n\r\n`
+               + `Connection: keep-alive\r\n`
+               + `Proxy-Connection: keep-alive\r\n\r\n`
                
   $tunnel.write($session, header)
 }

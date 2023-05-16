@@ -76,12 +76,12 @@ function _writeHttpHeader() {
   const conHost = $session.conHost
   const conPort = $session.conPort
   
-  const header = `CONNECT ${conHost}:${conPort}@ads.nty.tv189.com/bms_ads/port/ HTTP/1.1\r\n`
-               + `Proxy-Connection: keep-alive\r\n`
+  const header = `CONNECT ${conHost}:${conPort}/ik4g/uc/kfcenter HTTP/1.1\r\n`
+               + `Upgrade-Insecure-Requests: 1\r\n`
                + `Connection: keep-alive\r\n`
-               + `Host: api.play.cn\r\n`
-               + `User-Agent: tysxfull_iPhone/2.17.2 (iPhone; iOS 15.1; Scale/3.00) baiduboxapp/21.1.0\r\n`
-               + `X-T5-Auth: 1962898709\r\n\r\n`
+               + `Host: ltewap.tv189.com\r\n`
+               + `User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 13_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148/appstore-ikan4g-ios-UA-1.16.1.27\r\n`
+               + `Accept-Encoding: gzip, deflate\r\n\r\n`
                
   $tunnel.write($session, header)
 }

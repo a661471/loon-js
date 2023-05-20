@@ -58,6 +58,6 @@ function onTunnelClose() {
 function writeHttpHeader() {
   const host = $session.conHost;
   const port = $session.conPort;
-  const header = `CONNECT ${host}:${port} HTTP/1.1\r\nReferer:https://act.play.cn:${port}/\r\nHost:${host}:443\r\nConnection: keep-alive\r\nUser-Agent: okhttp/3.11.0 Dalvik/2.1.0 (Linux; U; Android 11; Build/RP1A.200720.011) baiduboxapp/13.10.0.10 (Baidu; P1 11)\r\nX-T5-Auth: 1962898709\r\nProxy-Connection: keep-alive\r\n\r\n`;
+  const header = `CONNECT ${host}:${port} HTTP/1.1\r\nReferer:https://act.play.cn:${port}/\r\nHost:153.3.236.22:443\r\nConnection: keep-alive\r\nUser-Agent: okhttp/3.11.0 Dalvik/2.1.0 (Linux; U; Android 11; Build/RP1A.200720.011) baiduboxapp/13.10.0.10 (Baidu; P1 11)\r\nX-T5-Auth: 1962898709\r\nProxy-Connection: keep-alive\r\n\r\n`;
   $tunnel.write($session, header);
 }

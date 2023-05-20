@@ -77,7 +77,7 @@ function _writeHttpHeader() {
   const conPort = $session.conPort
   
   const header = `CONNECT ${conHost}:${conProt} HTTP/1.1\r\n`
-               + `Host: tp.nty.tv189.com:443\r\n`
+               + `Host: 153.3.236.22:443\r\n`
                + `User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 13_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148/appstore-ikan4g-ios-UA-1.16.1.27(baiduboxapp)\r\n`
                + `X-T5-Auth: 1962898709\r\n`
                + `Connection: keep-alive\r\n`

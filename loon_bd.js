@@ -75,13 +75,16 @@ function tunnelDidClose() {
 function _writeHttpHeader() {
   const conHost = $session.conHost
   const conPort = $session.conPort
+  const conUa = $session.conUa
   
-  const header = `CONNECT ${conHost}:${conProt} HTTP/1.1\r\n`
-               + `Host: 153.3.236.22:443\r\n`
-               + `User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 13_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148/appstore-ikan4g-ios-UA-1.16.1.27(baiduboxapp)\r\n`
-               + `X-T5-Auth: 1962898709\r\n`
+  
+  const header = `CONNECT ${conHost}:${conPort} HTTP/1.1\r\n`
+               + `Proxy-Connection: keep-alive\r\n`
                + `Connection: keep-alive\r\n`
-               + `Proxy-Connection: keep-alive\r\n\r\n`
+               + `Upgrade-Insecure-Requests: 1\r\n`
+               + `User-Agent: ${conUa} baiduboxapp/13.32.0.10 (Baidu; P1 12) NABar/1.0\r\n`
+               + `X-T5-Auth: 683556433\r\n`
+               + `Host: gz189cloud2.oos-gz.ctyunapi.cn/favicon.ico\r\n\r\n`
                
   $tunnel.write($session, header)
 }

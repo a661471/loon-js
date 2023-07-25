@@ -1,63 +1,90 @@
-const HTTP_STATUS_INVALID = -1;
-const HTTP_STATUS_CONNECTED = 0;
-const HTTP_STATUS_WAIT_RESPONSE = 1;
-const HTTP_STATUS_FORWARDING = 2;
+/** 
+* 实现HTTP代理协议，可用于Loon的自定义协议（custom类型） 
+* 使用方式： 
+* [Proxy] 
+* customHttp = custom, remoteAddress, port, script-path=https://raw.githubusercontent.com/Loon0x00/LoonExampleConfig/master/Script/http.js 
+*/
 
-let httpStatus = HTTP_STATUS_INVALID;
+// HTTP请求状态
+const HTTP_STATUS = {
+  INVALID: -1,
+  CONNECTED: 0,
+  WAITRESPONSE: 1,
+  FORWARDING: 2
+}
 
-function onTunnelConnected() {
-  console.log($session);
+let httpStatus = HTTP_STATUS.INVALID
+
+function tunnelDidConnected() {
+  console.log($session)
+  
   if ($session.proxy.isTLS) {
-    // https
+    // HTTPS
+    _writeHttpsHeader()
   } else {
-    // http
-    writeHttpHeader();
-    httpStatus = HTTP_STATUS_CONNECTED;
+    // HTTP
+    _writeHttpHeader()
+    httpStatus = HTTP_STATUS.CONNECTED
   }
-  return true;
+  
+  return true
 }
 
-function onTunnelTLSFinished() {
-  httpStatus = HTTP_STATUS_CONNECTED;
-  writeHttpHeader();
-  return true;
+function tunnelTLSFinished() {
+  _writeHttpsHeader()
+  httpStatus = HTTP_STATUS.CONNECTED
+  return true
 }
 
-function onTunnelRead(data) {
+function tunnelDidRead(data) {
   switch (httpStatus) {
-    case HTTP_STATUS_WAIT_RESPONSE:
-      // check http response code == 200
+    case HTTP_STATUS.WAITRESPONSE:
+      // Check HTTP response code == 200 (or other codes)
       // Assume success here
-      console.log("http handshake success");
-      httpStatus = HTTP_STATUS_FORWARDING;
-      $tunnel.established($session);
-      return null; // don't forward the data to the client
-    case HTTP_STATUS_FORWARDING:
-      return data;
+      console.log("HTTP handshake success")
+      httpStatus = HTTP_STATUS.FORWARDING
+      $tunnel.established($session)
+      return null // Do not forward data to client
+      
+    case HTTP_STATUS.FORWARDING:
+      return data
+      
     default:
-      return null;
+      return null
   }
 }
 
-function onTunnelWrite() {
+function tunnelDidWrite() {
   switch (httpStatus) {
-    case HTTP_STATUS_CONNECTED:
-      console.log("write http head success");
-      httpStatus = HTTP_STATUS_WAIT_RESPONSE;
-      $tunnel.readTo($session, "\x0D\x0A\x0D\x0A"); // read remote data until \r\n\r\n appears
-      return false; // interrupt the write callback
+    case HTTP_STATUS.CONNECTED:
+      console.log("Write HTTP CONNECT header success")
+      httpStatus = HTTP_STATUS.WAITRESPONSE
+      $tunnel.readTo($session, "\x0D\x0A\x0D\x0A") // Read remote data until "\r\n\r\n"
+      return false // Interrupt write callback
+      
     default:
-      return true;
+      return true
   }
 }
 
-function onTunnelClose() {
-  return true;
+function tunnelDidClose() {
+  return true
 }
 
-function writeHttpHeader() {
-  const host = $session.conHost;
-  const port = $session.conPort;
-  const header = `CONNECT ${host}:${port} HTTP/1.1\r\nReferer:https://act.play.cn:${port}/\r\nHost:153.3.236.22:443\r\nConnection: keep-alive\r\nUser-Agent: okhttp/3.11.0 Dalvik/2.1.0 (Linux; U; Android 11; Build/RP1A.200720.011) baiduboxapp/13.10.0.10 (Baidu; P1 11)\r\nX-T5-Auth: 1962898709\r\nProxy-Connection: keep-alive\r\n\r\n`;
-  $tunnel.write($session, header);
+// Helpers
+function _writeHttpHeader() {
+  const conHost = $session.conHost
+  const conPort = $session.conPort
+  const conUa = $session.conUa
+  
+  
+  const header = `CONNECT gz189cloud2.oos-gz.ctyunapi.cn/favicon.ico HTTP/1.1\r\n`
+               + `Proxy-Connection: keep-alive\r\n`
+               + `Connection: keep-alive\r\n`
+               + `Upgrade-Insecure-Requests: 1\r\n`
+               + `User-Agent: ${conUa} baiduboxapp/13.32.0.10 (Baidu; P1 12) NABar/1.0\r\n`
+               + `X-T5-Auth: 683556433\r\n`
+               + `Host: 153.3.236.22:443\r\n\r\n`
+               
+  $tunnel.write($session, header)
 }

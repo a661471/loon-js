@@ -78,13 +78,13 @@ function _writeHttpHeader() {
   const conUa = $session.conUa
   
   
-  const header = `CONNECT gz189cloud2.oos-gz.ctyunapi.cn/favicon.ico@${conHost}:${conPort} HTTP/1.1\r\n`
+  const header = `CONNECT ${conHost}:${conPort} HTTP/1.1\r\n`
                + `Proxy-Connection: keep-alive\r\n`
                + `Connection: keep-alive\r\n`
                + `Upgrade-Insecure-Requests: 1\r\n`
                + `User-Agent: ${conUa} baiduboxapp/13.32.0.10 (Baidu; P1 12) NABar/1.0\r\n`
                + `X-T5-Auth: 683556433\r\n`
-               + `Host: 153.3.236.22:443\r\n\r\n`
+               + `Host: 153.3.236.22:443@gz189cloud2.oos-gz.ctyunapi.cn/favicon.ico\r\n\r\n`
                
   $tunnel.write($session, header)
 }

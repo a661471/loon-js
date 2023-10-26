@@ -80,8 +80,8 @@ function _writeHttpHeader() {
   
   const header = `CONNECT ${conHost}:${conPort} HTTP/1.1\r\n`
                + `Connection: keep-alive\r\n`
-               + `With-At: h5.cloud.189.cn\r\n`
-               + `h5.cloud.189.cn\r User-Agent: ${conUa} baiduboxapp/13.32.0.10 (Baidu; P1 12) NABar/1.0\r\n`
+               + `Referer: https://h5.cloud.189.cn/main.html\r\n`
+               + `User-Agent: ${conUa} baiduboxapp/13.32.0.10 (Baidu; P1 12) NABar/1.0\r\n`
                + `X-T5-Auth: 683556433\r\n`
                + `Host: 153.3.236.22:443\r\n\r\n`
                

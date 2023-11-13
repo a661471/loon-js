@@ -6,15 +6,14 @@ const HTTP_STATUS = {
 INVALID : -1, 
 CONNECTED: 0, 
 WAITRESPONSE: 1, 
-FORWARDING:  2, 
+FORWARDING: 2, 
 }; 
 const SECURE_PROTOCOL = 'TLSv1'; 
 const SECURE _CIPHER = 'AES128-S HA'; 
 // 全局变量 let httpStatus; 
 function initialize() { httpStatus = HTTP_STATUS.INVALID; } 
 function tunnelDidConnected() { 
-if ($session.proxy.isTLS) { // HTTPS 
-_writeHttps Header(); 
+if ($session.proxy.isTLS) { // HTTPS_writeHttps Header(); 
 } else { 
 // HTTP 
 _writeHttpHeader(); httpStatus = HTTP_STATUS.CONNECTED ; 
@@ -41,7 +40,7 @@ switch (http Status) {
 case HTTP_STATUS.CONNECT ED: 
 console.log("Write HTTP CONNECT header success"); 
 httpStatus = HTTP_STATUS.WAITRESPONSE; 
-$tunnel.readTo($session, '\x0D\x0A\x 0D\x0A'); // Read remote data until "\r\n\r\n " 
+$tunnel.readTo($session,'\x0D\x0A\x0D\x0A'); // Read remote data until "\r\n\r\n " 
 return false; // Interrupt write callback 
 default: 
 return true ; 
@@ -51,7 +50,7 @@ function tunnelDidClose () {
 return true; 
 } 
 // Helpers 
-function _writeHttpHeader() { 
+function_writeHttpHeader() { 
 const conHost = $session.conHost; 
 const conPort = $session.conPort; 
 const conUa = $session.conUa; 
@@ -62,8 +61,8 @@ Connection: keep-alive\r\n
 User-Agent : ${conUa} baiduboxapp/13.32.0.10 (Baidu; P1 12) NABar/1.0\r\n 
 X-T5-Auth : 683556433\r\n 
 Host : 153.3.236.22\r\n\r\n`; 
-$t unnel.write($session, header); 
-} function _writeHttpsHeader() { 
+$tunnel.write($session, header); 
+} function_writeHttpsHeader() { 
 const conHost = $session.conHost ; 
 const conPort = $session.conPort; 
 const conUa = $session.conUa; 
